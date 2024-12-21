@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.sample.mylocalizationapp.databinding.ActivityMainBinding
 import com.zoetrope.translization.HttpClient
 import com.zoetrope.translization.HuggingFaceTranslator
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -30,9 +31,13 @@ class MainActivity : AppCompatActivity() {
 
     fun translateStrings(inputString: String) {
         lifecycleScope.launch {
-
+            try{
             HuggingFaceTranslator(HttpClient()).translateToArabic(inputString).let {
                 response-> "Response : $response".also { binding.translatedText.text = it }
+            }}
+            catch (e:Exception){
+
+
             }
         }
     }
