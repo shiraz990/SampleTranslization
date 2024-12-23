@@ -1,4 +1,4 @@
-# SampleTranslization
+# Sample App - Translization library
 
 
 Library Implementation
